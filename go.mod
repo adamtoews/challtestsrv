@@ -1,4 +1,4 @@
-module github.com/letsencrypt/challtestsrv
+module github.com/adamtoews/challtestsrv
 
 go 1.13
 
