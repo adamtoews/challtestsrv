@@ -73,7 +73,13 @@ func (s *ChallSrv) ServeChallengeCertFunc(k *ecdsa.PrivateKey) func(*tls.ClientH
 		}
 		certTmpl := x509.Certificate{
 			SerialNumber: big.NewInt(1729),
-			DNSNames:     []string{hello.ServerName},
+			Issuer: pkix.Name{
+				CommonName: "acme.invalid",
+			},
+			Subject: pkix.Name{
+				CommonName: "acme.invalid",
+			},
+			DNSNames: []string{hello.ServerName},
 			ExtraExtensions: []pkix.Extension{
 				{
 					Id:       IDPeAcmeIdentifier,
